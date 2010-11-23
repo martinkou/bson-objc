@@ -15,6 +15,16 @@
 + (id) BSONFragment: (NSData *) data at: (const void **) base ofType: (uint8_t) typeID;
 @end
 
+@protocol BSONObjectCoding
+- (id) initWithBSONDictionary: (NSDictionary *) data;
+- (NSDictionary *) BSONDictionary;
+@end
+
+@interface NSObject (BSONObjectCoding)
+- (NSData *) BSONEncode;
+@end
+
+
 @interface NSDictionary (BSON) <BSONCoding>
 @end
 

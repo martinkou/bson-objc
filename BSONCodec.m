@@ -8,6 +8,8 @@
 
 #import "BSONCodec.h"
 #import <ctype.h>
+#import <string.h>
+#import <objc/runtime.h>
 
 #define BSONTYPE(tag,className) [className class], [NSNumber numberWithChar: (tag)]
 
@@ -72,6 +74,28 @@ static NSDictionary *BSONTypes()
 
 #endif
 
+#define CLASS_NAME_MARKER @"$$__CLASS_NAME__$$"
+
+@implementation NSObject (BSONObjectCoding)
+- (NSData *) BSONEncode
+{
+	if (!class_conformsToProtocol([self class], @protocol(BSONObjectCoding)))
+		[NSException raise: NSInvalidArgumentException format: @"BSON encoding is only valid on objects conforming to the BSONObjectEncoding protocol."];
+	
+	id <BSONObjectCoding> myself = (id <BSONObjectCoding>) self;
+	NSMutableDictionary *values = [[myself BSONDictionary] mutableCopy];
+	debug(@"values : %@", values);
+	
+	const char* className = class_getName([self class]);
+	[values setObject: [NSData dataWithBytes: (void *)className length: strlen(className)] forKey: CLASS_NAME_MARKER];
+	NSData *retval = [values BSONEncode];
+	[values release];
+	
+	return retval;
+}
+@end
+
+
 @implementation NSDictionary (BSON)
 
 - (uint8_t) BSONTypeID
@@ -94,12 +118,17 @@ static NSDictionary *BSONTypes()
 	
 	[components addObject: [NSData dataWithBytes: "\x00" length: 1]];
 	
-	// Encode data.
+	// Encode data.- (NSData *) BSONEncode;
 	uint8_t elementType = 0;
 	for (NSString *key in self)
 	{
-		id <BSONCoding> value = (id <BSONCoding>) [self objectForKey: key];
-		elementType = [value BSONTypeID];
+		NSObject *value = [self objectForKey: key];
+		
+		if ([value respondsToSelector: @selector(BSONTypeID)])
+			elementType = [(id <BSONCoding>) value BSONTypeID];
+		else
+			elementType = 3;
+		
 		[contentsData appendBytes: &elementType length: 1];
 		[contentsData appendData: [key dataUsingEncoding: NSUTF8StringEncoding]];
 		[contentsData appendBytes: "\x00" length: 1];
@@ -152,6 +181,23 @@ static NSDictionary *BSONTypes()
 	}
 	
 	*base = current + 1;
+	
+	// If the dictionary has a class name marker, then it is to be converted to an object.
+	if ([retval objectForKey: CLASS_NAME_MARKER] != nil)
+	{
+		NSData *classNameData = [retval objectForKey: CLASS_NAME_MARKER];
+		char *className = malloc([classNameData length] + 1);
+		memcpy(className, [classNameData bytes], [classNameData length]);
+		className[[classNameData length]] = 0;
+		
+		Class targetClass = objc_getClass(className);
+		if (targetClass == nil)
+			[NSException raise: NSInvalidArgumentException format: @"Class %s found in incoming data is undefined.", className];
+		
+		id obj = [[targetClass alloc] initWithBSONDictionary: retval];
+		return obj;
+	}
+	
 	return retval;
 }
 @end
