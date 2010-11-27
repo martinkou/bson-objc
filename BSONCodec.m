@@ -93,6 +93,11 @@ static NSDictionary *BSONTypes()
 
 	return retval;
 }
+
+- (NSData *) BSONRepresentation
+{
+  return [self BSONEncode];
+}
 @end
 
 
@@ -154,6 +159,11 @@ static NSDictionary *BSONTypes()
 	[components release];
 
 	return retval;
+}
+
+- (NSData *) BSONRepresentation
+{
+  return [self BSONEncode];
 }
 
 + (id) BSONFragment: (NSData *) data at: (const void **) base ofType: (uint8_t) t
@@ -225,6 +235,11 @@ static NSDictionary *BSONTypes()
 	[retval appendData: self];
 
 	return retval;
+}
+
+- (NSData *) BSONRepresentation
+{
+  return [self BSONEncode];
 }
 
 + (id) BSONFragment: (NSData *) data at: (const void **) base ofType: (uint8_t) t
@@ -337,6 +352,11 @@ static NSDictionary *BSONTypes()
 	return nil;
 }
 
+- (NSData *) BSONRepresentation
+{
+  return [self BSONEncode];
+}
+
 + (id) BSONFragment: (NSData *) data at: (const void **) base ofType: (uint8_t) t
 {
 	if (t == 0x01)
@@ -394,6 +414,11 @@ static NSDictionary *BSONTypes()
 	return retval;
 }
 
+- (NSData *) BSONRepresentation
+{
+  return [self BSONEncode];
+}
+
 + (id) BSONFragment: (NSData *) data at: (const void **) base ofType: (uint8_t) typeID
 {
 	uint32_t length = BSONTOHOST32(((const uint32_t *) *base)[0]);
@@ -421,6 +446,11 @@ static NSDictionary *BSONTypes()
 	return [tmp BSONEncode];
 }
 
+- (NSData *) BSONRepresentation
+{
+  return [self BSONEncode];
+}
+
 + (id) BSONFragment: (NSData *) data at: (const void **) base ofType: (uint8_t) typeID
 {
 	NSDictionary *tmp = [NSDictionary BSONFragment: data at: base ofType: 0x03];
@@ -441,6 +471,11 @@ static NSDictionary *BSONTypes()
 - (NSData *) BSONEncode
 {
 	return [NSData dataWithBytes: "" length: 0];
+}
+
+- (NSData *) BSONRepresentation
+{
+  return [self BSONEncode];
 }
 
 + (id) BSONFragment: (NSData *) data at: (const void **) base ofType: (uint8_t) typeID

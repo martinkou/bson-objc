@@ -12,6 +12,7 @@
 @protocol BSONCoding
 - (uint8_t) BSONTypeID;
 - (NSData *) BSONEncode;
+- (NSData *) BSONRepresentation;
 + (id) BSONFragment: (NSData *) data at: (const void **) base ofType: (uint8_t) typeID;
 @end
 
@@ -22,6 +23,7 @@
 
 @interface NSObject (BSONObjectCoding)
 - (NSData *) BSONEncode;
+- (NSData *) BSONRepresentation;
 @end
 
 
