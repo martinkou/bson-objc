@@ -118,9 +118,16 @@ static NSDictionary *BSONTypes()
 
 	[components addObject: [NSData dataWithBytes: "\x00" length: 1]];
 
+  // Ensure ordered keys. not in BSON spec, but ensures all BSONRepresentations
+  // of the same dict will be the same.
+  NSMutableArray *keys = [[NSMutableArray alloc] init];
+  for (NSString *key in self)
+    [keys addObject:key];
+  [keys sortUsingSelector:@selector(caseInsensitiveCompare:)];
+
 	// Encode data.- (NSData *) BSONEncode;
 	uint8_t elementType = 0;
-	for (NSString *key in self)
+	for (NSString *key in keys)
 	{
 		NSObject *value = [self objectForKey: key];
 
@@ -134,6 +141,7 @@ static NSDictionary *BSONTypes()
 		[contentsData appendBytes: "\x00" length: 1];
 		[contentsData appendData: [value BSONEncode]];
 	}
+  [keys release];
 
 	// Write length.
 	uint32_t *length = (uint32_t *)[lengthData mutableBytes];
