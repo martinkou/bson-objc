@@ -84,7 +84,7 @@ static NSDictionary *BSONTypes()
 
 	id <BSONObjectCoding> myself = (id <BSONObjectCoding>) self;
 	NSMutableDictionary *values = [[myself BSONDictionary] mutableCopy];
-	debug(@"values : %@", values);
+  // debug(@"values : %@", values);
 
 	const char* className = class_getName([self class]);
 	[values setObject: [NSData dataWithBytes: (void *)className length: strlen(className)] forKey: CLASS_NAME_MARKER];
