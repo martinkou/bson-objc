@@ -16,7 +16,7 @@
 static NSDictionary *BSONTypes()
 {
 	static NSDictionary *retval = nil;
-	
+
 	if (retval == nil)
 	{
 		retval = [[NSDictionary dictionaryWithObjectsAndKeys:
@@ -31,7 +31,7 @@ static NSDictionary *BSONTypes()
 				  BSONTYPE(0x12, NSNumber),
 				  nil] retain];
 	}
-	
+
 	return retval;
 }
 
@@ -81,16 +81,16 @@ static NSDictionary *BSONTypes()
 {
 	if (!class_conformsToProtocol([self class], @protocol(BSONObjectCoding)))
 		[NSException raise: NSInvalidArgumentException format: @"BSON encoding is only valid on objects conforming to the BSONObjectEncoding protocol."];
-	
+
 	id <BSONObjectCoding> myself = (id <BSONObjectCoding>) self;
 	NSMutableDictionary *values = [[myself BSONDictionary] mutableCopy];
 	debug(@"values : %@", values);
-	
+
 	const char* className = class_getName([self class]);
 	[values setObject: [NSData dataWithBytes: (void *)className length: strlen(className)] forKey: CLASS_NAME_MARKER];
 	NSData *retval = [values BSONEncode];
 	[values release];
-	
+
 	return retval;
 }
 @end
@@ -107,44 +107,44 @@ static NSDictionary *BSONTypes()
 {
 	// Initialize the components structure.
 	NSMutableArray *components = [[NSMutableArray alloc] init];
-	
+
 	NSMutableData *lengthData = [[NSMutableData alloc] initWithLength: 4];
 	[components addObject: lengthData];
 	[lengthData release];
-	
+
 	NSMutableData *contentsData = [[NSMutableData alloc] init];
 	[components addObject: contentsData];
 	[contentsData release];
-	
+
 	[components addObject: [NSData dataWithBytes: "\x00" length: 1]];
-	
+
 	// Encode data.- (NSData *) BSONEncode;
 	uint8_t elementType = 0;
 	for (NSString *key in self)
 	{
 		NSObject *value = [self objectForKey: key];
-		
+
 		if ([value respondsToSelector: @selector(BSONTypeID)])
 			elementType = [(id <BSONCoding>) value BSONTypeID];
 		else
 			elementType = 3;
-		
+
 		[contentsData appendBytes: &elementType length: 1];
 		[contentsData appendData: [key dataUsingEncoding: NSUTF8StringEncoding]];
 		[contentsData appendBytes: "\x00" length: 1];
 		[contentsData appendData: [value BSONEncode]];
 	}
-	
+
 	// Write length.
 	uint32_t *length = (uint32_t *)[lengthData mutableBytes];
 	*length = HOSTTOBSON32([contentsData length]) + 4 + 1;
-	
+
 	// Assemble the output data.
 	NSMutableData *retval = [NSMutableData data];
 	for (NSData *data in components)
 		[retval appendData: data];
 	[components release];
-	
+
 	return retval;
 }
 
@@ -155,33 +155,33 @@ static NSDictionary *BSONTypes()
 		current = *base;
 	else
 		base = &current;
-	
+
 	uint32_t length = BSONTOHOST32(*((uint32_t *)current));
 	const void *endPoint = current + length;
 	current += 4;
-	
+
 	NSMutableDictionary *retval = [NSMutableDictionary dictionary];
 	while (current < endPoint - 1)
 	{
 		uint8_t typeID = *((uint8_t *)current);
 		current++;
-		
+
 		char *utf8Key = (char *) current;
 		while (*((char *)current) != 0 && current < endPoint - 1)
 			current++;
 		current++;
 		NSString *key = [NSString stringWithUTF8String: utf8Key];
-		
+
 		*base = current;
 		Class typeClass = [BSONTypes() objectForKey: [NSNumber numberWithChar: typeID]];
 		id value = objc_msgSend(typeClass, @selector(BSONFragment:at:ofType:), data, base, typeID);
 		current = *base;
-		
+
 		[retval setObject: value forKey: key];
 	}
-	
+
 	*base = current + 1;
-	
+
 	// If the dictionary has a class name marker, then it is to be converted to an object.
 	if ([retval objectForKey: CLASS_NAME_MARKER] != nil)
 	{
@@ -189,15 +189,15 @@ static NSDictionary *BSONTypes()
 		char *className = malloc([classNameData length] + 1);
 		memcpy(className, [classNameData bytes], [classNameData length]);
 		className[[classNameData length]] = 0;
-		
+
 		Class targetClass = objc_getClass(className);
 		if (targetClass == nil)
 			[NSException raise: NSInvalidArgumentException format: @"Class %s found in incoming data is undefined.", className];
-		
+
 		id obj = [[targetClass alloc] initWithBSONDictionary: retval];
 		return obj;
 	}
-	
+
 	return retval;
 }
 @end
@@ -215,7 +215,7 @@ static NSDictionary *BSONTypes()
 	[retval appendBytes: &length length: 4];
 	[retval appendBytes: "\x00" length: 1];
 	[retval appendData: self];
-	
+
 	return retval;
 }
 
@@ -226,10 +226,10 @@ static NSDictionary *BSONTypes()
 		current = *base;
 	else
 		base = &current;
-	
+
 	uint32_t length = BSONTOHOST32(*((uint32_t *)current));
 	current += 4 + 1;
-	
+
 	NSData *retval = [NSData dataWithBytes: current length: length];
 	current += length;
 	*base = current;
@@ -246,7 +246,7 @@ static NSDictionary *BSONTypes()
 - (uint8_t) BSONTypeID
 {
 	const char encoding = tolower(*([self objCType]));
-	
+
 	if (encoding == 'f' || encoding == 'd')
 		return 0x01;
 	if (encoding == 'b')
@@ -256,7 +256,7 @@ static NSDictionary *BSONTypes()
 		// Ok, if you're running Objective-C on 16-bit platforms...
 		// Then YOU have issues.
 		// So, yeah, we won't handle that case.
-		
+
 		if (sizeof(int) == 4)
 			return 0x10;
 		else if (sizeof(int) == 8)
@@ -271,7 +271,7 @@ static NSDictionary *BSONTypes()
 	}
 	if (encoding == 'q')
 		return 0x12;
-	
+
 	[NSException raise: NSInvalidArgumentException format: @"%@::%s - invalid encoding type '%c'", [self class], _cmd, encoding];
 	return 0;
 }
@@ -279,25 +279,25 @@ static NSDictionary *BSONTypes()
 - (NSData *) BSONEncode
 {
 	const char encoding = tolower(*([self objCType]));
-	
+
 	if (encoding == 'd')
 	{
 		double value = [self doubleValue];
 		return [NSData dataWithBytes: &value length: 8];
 	}
-	
+
 	if (encoding == 'f')
 	{
 		double value = [self floatValue];
 		return [NSData dataWithBytes: &value length: 8];
 	}
-	
+
 	if (encoding == 'b')
 	{
 		char value = [self boolValue];
 		return [NSData dataWithBytes: &value length: 1];
 	}
-	
+
 	if (encoding == 'i')
 	{
 		int value = [self intValue];
@@ -307,7 +307,7 @@ static NSDictionary *BSONTypes()
 			value = HOSTTOBSON64(value);
 		return [NSData dataWithBytes: &value length: sizeof(int)];
 	}
-	
+
 	if (encoding == 'l')
 	{
 		long value = [self longValue];
@@ -315,16 +315,16 @@ static NSDictionary *BSONTypes()
 			value = HOSTTOBSON32(value);
 		else if (sizeof(long) == 8)
 			value = HOSTTOBSON64(value);
-		
+
 		return [NSData dataWithBytes: &value length: sizeof(long)];
 	}
-	
+
 	if (encoding == 'q')
 	{
 		long long value = HOSTTOBSON64([self longLongValue]);
 		return [NSData dataWithBytes: &value length: 8];
 	}
-	
+
 	[NSException raise: NSInvalidArgumentException format: @"%@::%s - invalid encoding type '%c'", [self class], _cmd, encoding];
 	return nil;
 }
@@ -337,25 +337,25 @@ static NSDictionary *BSONTypes()
 		*base += 8;
 		return [NSNumber numberWithDouble: value];
 	}
-	
+
 	if (t == 0x08)
 	{
 		char value = ((char *) *base)[0];
 		*base += 1;
 		return [NSNumber numberWithBool: value];
 	}
-	
+
 	if (t == 0x10)
 	{
 		int32_t value = BSONTOHOST32(((int32_t *) *base)[0]);
 		*base += 4;
-		
+
 		if (sizeof(int) == 4)
 			return [NSNumber numberWithInt: value];
-		
+
 		return [NSNumber numberWithLong: value];
 	}
-	
+
 	if (t == 0x12)
 	{
 		int64_t value = BSONTOHOST64(((int64_t *) *base)[0]);
@@ -363,7 +363,7 @@ static NSDictionary *BSONTypes()
 
 		return [NSNumber numberWithLongLong: value];
 	}
-	
+
 	return nil;
 }
 @end
@@ -378,7 +378,7 @@ static NSDictionary *BSONTypes()
 {
 	NSData *utf8Data = [self dataUsingEncoding: NSUTF8StringEncoding];
 	uint32_t length = HOSTTOBSON32([utf8Data length] + 1);
-	
+
 	NSMutableData *retval = [NSMutableData data];
 	[retval appendBytes: &length length: 4];
 	[retval appendData: utf8Data];
@@ -390,10 +390,10 @@ static NSDictionary *BSONTypes()
 {
 	uint32_t length = BSONTOHOST32(((const uint32_t *) *base)[0]);
 	*base += 4;
-	
+
 	const char *utf8Str = (const char *) *base;
 	*base += length;
-	
+
 	return [NSString stringWithUTF8String: utf8Str];
 }
 @end
@@ -409,7 +409,7 @@ static NSDictionary *BSONTypes()
 	NSMutableDictionary *tmp = [NSMutableDictionary dictionaryWithCapacity: [self count]];
 	for (int i = 0; i < [self count]; i++)
 		[tmp setObject: [self objectAtIndex: i] forKey: [NSString stringWithFormat: @"%d", i]];
-	
+
 	return [tmp BSONEncode];
 }
 
@@ -419,7 +419,7 @@ static NSDictionary *BSONTypes()
 	NSMutableArray *retval = [NSMutableArray arrayWithCapacity: [tmp count]];
 	for (int i = 0; i < [tmp count]; i++)
 		[retval addObject: [tmp objectForKey: [NSString stringWithFormat: @"%d", i]]];
-	
+
 	return retval;
 }
 @end
