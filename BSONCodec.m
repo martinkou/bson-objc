@@ -275,8 +275,11 @@ static NSDictionary *BSONTypes()
 		case 'd': return 0x01;
 		case 'b': return 0x08;
 		case 'c':
-		case 's': return 0x10;
+		case 'C':
+		case 's':
+		case 'S': return 0x10;
 		case 'i':
+		case 'I':
 			// Ok, if you're running Objective-C on 16-bit platforms...
 			// Then YOU have issues.
 			// So, yeah, we won't handle that case.
@@ -285,13 +288,15 @@ static NSDictionary *BSONTypes()
 			else if (sizeof(int) == 8)
 				return 0x12;
 
+		case 'L':
 		case 'l':
 			if (sizeof(long) == 4)
 				return 0x10;
 			else if (sizeof(long) == 8)
 				return 0x12;
 
-		case 'q': return 0x12;
+		case 'q':
+		case 'Q': return 0x12;
 		default:
 			[NSException raise: NSInvalidArgumentException format: @"%@::%s - invalid encoding type '%c'", [self class], _cmd, encoding];
 	}
@@ -320,21 +325,21 @@ static NSDictionary *BSONTypes()
 		return [NSData dataWithBytes: &value length: 1];
 	}
 
-	if (encoding == 'c')
+	if (encoding == 'c' || encoding == 'C')
 	{
 		int32_t value = [self charValue];
 		value = HOSTTOBSON32(value);
 		return [NSData dataWithBytes: &value length: 4];
 	}
 
-	if (encoding == 's')
+	if (encoding == 's' || encoding == 'S')
 	{
 		int32_t value = [self shortValue];
 		value = HOSTTOBSON32(value);
 		return [NSData dataWithBytes: &value length: 4];
 	}
 
-	if (encoding == 'i')
+	if (encoding == 'i' || encoding == 'I')
 	{
 		int value = [self intValue];
 		if (sizeof(int) == 4)
@@ -344,7 +349,7 @@ static NSDictionary *BSONTypes()
 		return [NSData dataWithBytes: &value length: sizeof(int)];
 	}
 
-	if (encoding == 'l')
+	if (encoding == 'l' || encoding == 'L')
 	{
 		long value = [self longValue];
 		if (sizeof(long) == 4)
@@ -355,7 +360,7 @@ static NSDictionary *BSONTypes()
 		return [NSData dataWithBytes: &value length: sizeof(long)];
 	}
 
-	if (encoding == 'q')
+	if (encoding == 'q' || encoding == 'Q')
 	{
 		long long value = HOSTTOBSON64([self longLongValue]);
 		return [NSData dataWithBytes: &value length: 8];
