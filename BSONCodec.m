@@ -270,32 +270,31 @@ static NSDictionary *BSONTypes()
 {
 	const char encoding = tolower(*([self objCType]));
 
-	if (encoding == 'f' || encoding == 'd')
-		return 0x01;
-	if (encoding == 'b')
-		return 0x08;
-	if (encoding == 'i')
-	{
-		// Ok, if you're running Objective-C on 16-bit platforms...
-		// Then YOU have issues.
-		// So, yeah, we won't handle that case.
+	switch (encoding) {
+		case 'f':
+		case 'd': return 0x01;
+		case 'b': return 0x08;
+		case 'c':
+		case 's': return 0x10;
+		case 'i':
+			// Ok, if you're running Objective-C on 16-bit platforms...
+			// Then YOU have issues.
+			// So, yeah, we won't handle that case.
+			if (sizeof(int) == 4)
+				return 0x10;
+			else if (sizeof(int) == 8)
+				return 0x12;
 
-		if (sizeof(int) == 4)
-			return 0x10;
-		else if (sizeof(int) == 8)
-			return 0x12;
-	}
-	if (encoding == 'l')
-	{
-		if (sizeof(long) == 4)
-			return 0x10;
-		else if (sizeof(long) == 8)
-			return 0x12;
-	}
-	if (encoding == 'q')
-		return 0x12;
+		case 'l':
+			if (sizeof(long) == 4)
+				return 0x10;
+			else if (sizeof(long) == 8)
+				return 0x12;
 
-	[NSException raise: NSInvalidArgumentException format: @"%@::%s - invalid encoding type '%c'", [self class], _cmd, encoding];
+		case 'q': return 0x12;
+		default:
+			[NSException raise: NSInvalidArgumentException format: @"%@::%s - invalid encoding type '%c'", [self class], _cmd, encoding];
+	}
 	return 0;
 }
 
@@ -319,6 +318,20 @@ static NSDictionary *BSONTypes()
 	{
 		char value = [self boolValue];
 		return [NSData dataWithBytes: &value length: 1];
+	}
+
+	if (encoding == 'c')
+	{
+		int32_t value = [self charValue];
+		value = HOSTTOBSON32(value);
+		return [NSData dataWithBytes: &value length: 4];
+	}
+
+	if (encoding == 's')
+	{
+		int32_t value = [self shortValue];
+		value = HOSTTOBSON32(value);
+		return [NSData dataWithBytes: &value length: 4];
 	}
 
 	if (encoding == 'i')
