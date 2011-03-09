@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		AA747D9F0F9514B9006C5449 /* bson_objc_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* bson_objc_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		BD288FAD132720CB00103518 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD288FAC132720CB00103518 /* GHUnitIOS.framework */; };
+		BD288FB0132720D900103518 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		BD288FB51327210800103518 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD288FB41327210800103518 /* CoreGraphics.framework */; };
+		BD288FB91327211B00103518 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD288FB81327211B00103518 /* UIKit.framework */; };
+		BD2890A11327229100103518 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = BD28909F1327227F00103518 /* GHUnitIOSTestMain.m */; };
+		BD2890A41327231200103518 /* BSONCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = BD320BEC13271BC400FEB113 /* BSONCodec.m */; };
 		BD320BED13271BC400FEB113 /* BSONCodec.h in Headers */ = {isa = PBXBuildFile; fileRef = BD320BEB13271BC400FEB113 /* BSONCodec.h */; };
 		BD320BEE13271BC400FEB113 /* BSONCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = BD320BEC13271BC400FEB113 /* BSONCodec.m */; };
 /* End PBXBuildFile section */
@@ -16,12 +22,30 @@
 /* Begin PBXFileReference section */
 		AA747D9E0F9514B9006C5449 /* bson_objc_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bson_objc_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BD288F8E13271E1800103518 /* UnitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD288F9013271E1800103518 /* UnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTest-Info.plist"; sourceTree = "<group>"; };
+		BD288FAC132720CB00103518 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = UnitTest/GHUnitIOS.framework; sourceTree = "<group>"; };
+		BD288FB41327210800103518 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BD288FB81327211B00103518 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BD28909F1327227F00103518 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
+		BD2890A2132722C300103518 /* UnitTest.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitTest.pch; sourceTree = "<group>"; };
 		BD320BEB13271BC400FEB113 /* BSONCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSONCodec.h; sourceTree = "<group>"; };
 		BD320BEC13271BC400FEB113 /* BSONCodec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSONCodec.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libbson_objc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libbson_objc.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BD288F8C13271E1800103518 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD288FAD132720CB00103518 /* GHUnitIOS.framework in Frameworks */,
+				BD288FB0132720D900103518 /* Foundation.framework in Frameworks */,
+				BD288FB51327210800103518 /* CoreGraphics.framework in Frameworks */,
+				BD288FB91327211B00103518 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AAC07C0554694100DB518D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -37,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AAC07E0554694100DB518D /* libbson_objc.a */,
+				BD288F8E13271E1800103518 /* UnitTest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -44,6 +69,7 @@
 		0867D691FE84028FC02AAC07 /* bson-objc */ = {
 			isa = PBXGroup;
 			children = (
+				BD28909B132721F900103518 /* Unit Tests */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
@@ -55,7 +81,10 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BD288FB41327210800103518 /* CoreGraphics.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+				BD288FAC132720CB00103518 /* GHUnitIOS.framework */,
+				BD288FB81327211B00103518 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -77,6 +106,16 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		BD28909B132721F900103518 /* Unit Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BD28909F1327227F00103518 /* GHUnitIOSTestMain.m */,
+				BD288F9013271E1800103518 /* UnitTest-Info.plist */,
+				BD2890A2132722C300103518 /* UnitTest.pch */,
+			);
+			name = "Unit Tests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -92,6 +131,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		BD288F8D13271E1800103518 /* UnitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD288F9313271E1900103518 /* Build configuration list for PBXNativeTarget "UnitTest" */;
+			buildPhases = (
+				BD288F8A13271E1800103518 /* Resources */,
+				BD288F8B13271E1800103518 /* Sources */,
+				BD288F8C13271E1800103518 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnitTest;
+			productName = UnitTest;
+			productReference = BD288F8E13271E1800103518 /* UnitTest.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D2AAC07D0554694100DB518D /* bson-objc */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "bson-objc" */;
@@ -130,11 +186,31 @@
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* bson-objc */,
+				BD288F8D13271E1800103518 /* UnitTest */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		BD288F8A13271E1800103518 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		BD288F8B13271E1800103518 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD2890A11327229100103518 /* GHUnitIOSTestMain.m in Sources */,
+				BD2890A41327231200103518 /* BSONCodec.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AAC07B0554694100DB518D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -205,6 +281,67 @@
 			};
 			name = Release;
 		};
+		BD288F9113271E1900103518 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/UnitTest\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "UnitTest-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+					"-all_load",
+					"-ObjC",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTest;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BD288F9213271E1900103518 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/UnitTest\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "UnitTest-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+					"-all_load",
+					"-ObjC",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTest;
+				SDKROOT = iphoneos;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -222,6 +359,15 @@
 			buildConfigurations = (
 				1DEB922308733DC00010E9CD /* Debug */,
 				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD288F9313271E1900103518 /* Build configuration list for PBXNativeTarget "UnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD288F9113271E1900103518 /* Debug */,
+				BD288F9213271E1900103518 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
