@@ -84,7 +84,6 @@ static NSDictionary *BSONTypes()
 
 	id <BSONObjectCoding> myself = (id <BSONObjectCoding>) self;
 	NSMutableDictionary *values = [[myself BSONDictionary] mutableCopy];
-  // debug(@"values : %@", values);
 
 	const char* className = class_getName([self class]);
 	[values setObject: [NSData dataWithBytes: (void *)className length: strlen(className)] forKey: CLASS_NAME_MARKER];
@@ -123,12 +122,12 @@ static NSDictionary *BSONTypes()
 
 	[components addObject: [NSData dataWithBytes: "\x00" length: 1]];
 
-  // Ensure ordered keys. not in BSON spec, but ensures all BSONRepresentations
-  // of the same dict will be the same.
-  NSMutableArray *keys = [[NSMutableArray alloc] init];
-  for (NSString *key in self)
-    [keys addObject:key];
-  [keys sortUsingSelector:@selector(caseInsensitiveCompare:)];
+	// Ensure ordered keys. not in BSON spec, but ensures all BSONRepresentations
+	// of the same dict will be the same.
+	NSMutableArray *keys = [[NSMutableArray alloc] init];
+	for (NSString *key in self)
+		[keys addObject: key];
+	[keys sortUsingSelector: @selector(caseInsensitiveCompare:)];
 
 	// Encode data.- (NSData *) BSONEncode;
 	uint8_t elementType = 0;
@@ -146,7 +145,7 @@ static NSDictionary *BSONTypes()
 		[contentsData appendBytes: "\x00" length: 1];
 		[contentsData appendData: [value BSONEncode]];
 	}
-  [keys release];
+	[keys release];
 
 	// Write length.
 	uint32_t *length = (uint32_t *)[lengthData mutableBytes];
@@ -452,11 +451,48 @@ static NSDictionary *BSONTypes()
 
 - (NSData *) BSONEncode
 {
-	NSMutableDictionary *tmp = [NSMutableDictionary dictionaryWithCapacity: [self count]];
-	for (int i = 0; i < [self count]; i++)
-		[tmp setObject: [self objectAtIndex: i] forKey: [NSString stringWithFormat: @"%d", i]];
-
-	return [tmp BSONEncode];
+	// Initialize the components structure.
+	NSMutableArray *components = [[NSMutableArray alloc] init];
+	
+	NSMutableData *lengthData = [[NSMutableData alloc] initWithLength: 4];
+	[components addObject: lengthData];
+	[lengthData release];
+	
+	NSMutableData *contentsData = [[NSMutableData alloc] init];
+	[components addObject: contentsData];
+	[contentsData release];
+	
+	[components addObject: [NSData dataWithBytes: "\x00" length: 1]];
+	
+	// Encode data.
+	uint8_t elementType = 0;
+	int count = [self count];
+	for (int i = 0 ; i < count ; i++)
+	{
+		NSObject *value = [self objectAtIndex: i];
+		
+		if ([value respondsToSelector: @selector(BSONTypeID)])
+			elementType = [(id <BSONCoding>) value BSONTypeID];
+		else
+			elementType = 3;
+		
+		[contentsData appendBytes: &elementType length: 1];
+		[contentsData appendData: [[NSString stringWithFormat: @"%d", i] dataUsingEncoding: NSUTF8StringEncoding]];
+		[contentsData appendBytes: "\x00" length: 1];
+		[contentsData appendData: [value BSONEncode]];
+	}
+	
+	// Write length.
+	uint32_t *length = (uint32_t *)[lengthData mutableBytes];
+	*length = HOSTTOBSON32([contentsData length]) + 4 + 1;
+	
+	// Assemble the output data.
+	NSMutableData *retval = [NSMutableData data];
+	for (NSData *data in components)
+		[retval appendData: data];
+	[components release];
+	
+	return retval;
 }
 
 - (NSData *) BSONRepresentation
