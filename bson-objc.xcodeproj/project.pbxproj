@@ -7,37 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA747D9F0F9514B9006C5449 /* bson_objc_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* bson_objc_Prefix.pch */; };
-		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		BD288FAD132720CB00103518 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD288FAC132720CB00103518 /* GHUnitIOS.framework */; };
 		BD288FB0132720D900103518 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		BD288FB51327210800103518 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD288FB41327210800103518 /* CoreGraphics.framework */; };
 		BD288FB91327211B00103518 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD288FB81327211B00103518 /* UIKit.framework */; };
-		BD2890A11327229100103518 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = BD28909F1327227F00103518 /* GHUnitIOSTestMain.m */; };
-		BD2890A41327231200103518 /* BSONCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = BD320BEC13271BC400FEB113 /* BSONCodec.m */; };
 		BD2890CC1327252100103518 /* TestArray.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2890CB1327252100103518 /* TestArray.m */; };
-		BD320BED13271BC400FEB113 /* BSONCodec.h in Headers */ = {isa = PBXBuildFile; fileRef = BD320BEB13271BC400FEB113 /* BSONCodec.h */; };
-		BD320BEE13271BC400FEB113 /* BSONCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = BD320BEC13271BC400FEB113 /* BSONCodec.m */; };
 		BDA1D2B31328360100DE3F9A /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA1D2B21328360100DE3F9A /* NSData+Base64.m */; };
+		D9DB6AA513C7294300C87760 /* BSONCodec.h in Headers */ = {isa = PBXBuildFile; fileRef = D9DB6AA313C7294300C87760 /* BSONCodec.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9DB6AA613C7294300C87760 /* BSONCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DB6AA413C7294300C87760 /* BSONCodec.m */; };
+		D9DB6AA713C7294300C87760 /* BSONCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DB6AA413C7294300C87760 /* BSONCodec.m */; };
+		D9DB6AAB13C7299000C87760 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DB6AAA13C7299000C87760 /* GHUnitIOSTestMain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA747D9E0F9514B9006C5449 /* bson_objc_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bson_objc_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BD288F8E13271E1800103518 /* UnitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD288F9013271E1800103518 /* UnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTest-Info.plist"; sourceTree = "<group>"; };
 		BD288FAC132720CB00103518 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = UnitTest/GHUnitIOS.framework; sourceTree = "<group>"; };
 		BD288FB41327210800103518 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BD288FB81327211B00103518 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		BD28909F1327227F00103518 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
 		BD2890CA1327252100103518 /* TestArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestArray.h; sourceTree = "<group>"; };
 		BD2890CB1327252100103518 /* TestArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestArray.m; sourceTree = "<group>"; };
-		BD320BEB13271BC400FEB113 /* BSONCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSONCodec.h; sourceTree = "<group>"; };
-		BD320BEC13271BC400FEB113 /* BSONCodec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSONCodec.m; sourceTree = "<group>"; };
 		BDA1D1E2132824C700DE3F9A /* UnitTest.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitTest.pch; path = UnitTest/UnitTest.pch; sourceTree = "<group>"; };
 		BDA1D2B11328360100DE3F9A /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		BDA1D2B21328360100DE3F9A /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
-		D2AAC07E0554694100DB518D /* libbson_objc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libbson_objc.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9DB6A8113C725B500C87760 /* bson-objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bson-objc.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9DB6AA013C728D500C87760 /* bson-objc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bson-objc-Info.plist"; sourceTree = "<group>"; };
+		D9DB6AA213C728D500C87760 /* UnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTest-Info.plist"; sourceTree = "<group>"; };
+		D9DB6AA313C7294300C87760 /* BSONCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSONCodec.h; path = src/BSONCodec.h; sourceTree = "<group>"; };
+		D9DB6AA413C7294300C87760 /* BSONCodec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSONCodec.m; path = src/BSONCodec.m; sourceTree = "<group>"; };
+		D9DB6AA813C7298000C87760 /* UnitTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "UnitTest-Info.plist"; path = "resources/UnitTest-Info.plist"; sourceTree = "<group>"; };
+		D9DB6AAA13C7299000C87760 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHUnitIOSTestMain.m; path = UnitTest/GHUnitIOSTestMain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,22 +51,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2AAC07C0554694100DB518D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D2AAC07E0554694100DB518D /* libbson_objc.a */,
 				BD288F8E13271E1800103518 /* UnitTest.app */,
+				D9DB6A8113C725B500C87760 /* bson-objc.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,8 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				BD28909B132721F900103518 /* UnitTest */,
-				08FB77AEFE84172EC02AAC07 /* Classes */,
-				32C88DFF0371C24200C91783 /* Other Sources */,
+				08FB77AEFE84172EC02AAC07 /* src */,
+				D9DB6A9F13C728D500C87760 /* resources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -95,21 +86,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+		08FB77AEFE84172EC02AAC07 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				BD320BEB13271BC400FEB113 /* BSONCodec.h */,
-				BD320BEC13271BC400FEB113 /* BSONCodec.m */,
+				D9DB6AA313C7294300C87760 /* BSONCodec.h */,
+				D9DB6AA413C7294300C87760 /* BSONCodec.m */,
 			);
-			name = Classes;
-			sourceTree = "<group>";
-		};
-		32C88DFF0371C24200C91783 /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-				AA747D9E0F9514B9006C5449 /* bson_objc_Prefix.pch */,
-			);
-			name = "Other Sources";
+			name = src;
 			sourceTree = "<group>";
 		};
 		BD28909B132721F900103518 /* UnitTest */ = {
@@ -126,9 +109,9 @@
 		BD2890CD1327253000103518 /* GHUnit */ = {
 			isa = PBXGroup;
 			children = (
+				D9DB6AAA13C7299000C87760 /* GHUnitIOSTestMain.m */,
+				D9DB6AA813C7298000C87760 /* UnitTest-Info.plist */,
 				BDA1D1E2132824C700DE3F9A /* UnitTest.pch */,
-				BD28909F1327227F00103518 /* GHUnitIOSTestMain.m */,
-				BD288F9013271E1800103518 /* UnitTest-Info.plist */,
 			);
 			name = GHUnit;
 			sourceTree = SOURCE_ROOT;
@@ -142,15 +125,23 @@
 			name = Base64;
 			sourceTree = "<group>";
 		};
+		D9DB6A9F13C728D500C87760 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				D9DB6AA013C728D500C87760 /* bson-objc-Info.plist */,
+				D9DB6AA213C728D500C87760 /* UnitTest-Info.plist */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		D2AAC07A0554694100DB518D /* Headers */ = {
+		D9DB6A7D13C725B500C87760 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA747D9F0F9514B9006C5449 /* bson_objc_Prefix.pch in Headers */,
-				BD320BED13271BC400FEB113 /* BSONCodec.h in Headers */,
+				D9DB6AA513C7294300C87760 /* BSONCodec.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,13 +165,14 @@
 			productReference = BD288F8E13271E1800103518 /* UnitTest.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D2AAC07D0554694100DB518D /* bson-objc */ = {
+		D9DB6A8013C725B500C87760 /* bson-objc */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "bson-objc" */;
+			buildConfigurationList = D9DB6A8913C725B500C87760 /* Build configuration list for PBXNativeTarget "bson-objc" */;
 			buildPhases = (
-				D2AAC07A0554694100DB518D /* Headers */,
-				D2AAC07B0554694100DB518D /* Sources */,
-				D2AAC07C0554694100DB518D /* Frameworks */,
+				D9DB6A7C13C725B500C87760 /* Sources */,
+				D9DB6A7D13C725B500C87760 /* Headers */,
+				D9DB6A7E13C725B500C87760 /* ShellScript */,
+				D9DB6AAC13C72CA500C87760 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -188,8 +180,8 @@
 			);
 			name = "bson-objc";
 			productName = "bson-objc";
-			productReference = D2AAC07E0554694100DB518D /* libbson_objc.a */;
-			productType = "com.apple.product-type.library.static";
+			productReference = D9DB6A8113C725B500C87760 /* bson-objc.framework */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -205,14 +197,15 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* bson-objc */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D2AAC07D0554694100DB518D /* bson-objc */,
 				BD288F8D13271E1800103518 /* UnitTest */,
+				D9DB6A8013C725B500C87760 /* bson-objc */,
 			);
 		};
 /* End PBXProject section */
@@ -227,61 +220,58 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D9DB6A7E13C725B500C87760 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${ACTION}\" = \"build\" ]\nthen\n\n# Product name should be ${TARGET_NAME}.framework anyway...\nFWK_NAME=\"${WRAPPER_NAME}\"\nFWK_LIB=\"${FWK_NAME}/${TARGET_NAME}\"\n\n# Set the target folders and the final framework product.\nFWK_PATH=\"${SYMROOT}/${CONFIGURATION}-framework\"\nDEV_PATH=\"${SYMROOT}/${CONFIGURATION}-iphoneos\"\nSIM_PATH=\"${SYMROOT}/${CONFIGURATION}-iphonesimulator\"\nFWK_ROOT=\"${FWK_PATH}/${FWK_NAME}\"\n\necho \"framework: building ${FWK_NAME}\"\n\necho \"framework: setting up framework directory structure\"\n\nmkdir -p \"${FWK_ROOT}\"\nrm -rf \"${FWK_ROOT}/\"*\n\nif [ $? -ne 0 ];then\n  echo \"error: failed to delete existing framework. check permissions?\"\n  exit\nfi\n\n# Build the canonical Framework bundle directory structure\nmkdir -p \"${FWK_ROOT}/Versions\"\nmkdir -p \"${FWK_ROOT}/Versions/${FRAMEWORK_VERSION}\"\nmkdir -p \"${FWK_ROOT}/Versions/${FRAMEWORK_VERSION}/Resources\"\nmkdir -p \"${FWK_ROOT}/Versions/${FRAMEWORK_VERSION}/Headers\"\n\nln -s \"${FRAMEWORK_VERSION}\" \"${FWK_ROOT}/Versions/Current\"\nln -s \"Versions/Current/Headers\" \"${FWK_ROOT}/Headers\"\nln -s \"Versions/Current/Resources\" \"${FWK_ROOT}/Resources\"\nln -s \"Versions/Current/${TARGET_NAME}\" \"${FWK_ROOT}/${TARGET_NAME}\"\n\n\nif [ ! -d \"${DEV_PATH}/${FWK_NAME}/Headers\" ]\nthen\n  echo \"error: Framework target \\\"${TARGET_NAME}\\\" did not copy any headers.\" \\\n   \"Make sure the desired headers are on the 'Copy Headers' Build Phase.\" \\\n   \"Make sure you built the Device target (from which headers are copied).\"\n  exit 1\nfi\n\n# Copy the header files to the final product folder.\necho \"framework: copying headers from ${DEV_PATH}/${FWK_NAME}/Headers\"\nditto \"${DEV_PATH}/${FWK_NAME}/Headers\" \"${FWK_ROOT}/Headers\"\n\n# Copy the header files to the final product folder.\necho \"framework: copying Info.plist file\"\ncp \"${DEV_PATH}/${FWK_NAME}/Info.plist\" \"${FWK_ROOT}/Resources/Info.plist\"\n\n# Use the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\necho \"framework: creating universal lib ${FWK_PATH}/${FWK_LIB}\"\nlipo -create \"${DEV_PATH}/${FWK_LIB}\" \"${SIM_PATH}/${FWK_LIB}\" \\\n     -output \"${FWK_ROOT}/Versions/Current/${TARGET_NAME}\"\n\nfi";
+		};
+		D9DB6AAC13C72CA500C87760 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]\nthen\n\n# Product name should be ${TARGET_NAME}.framework anyway...\nFWK_NAME=\"${WRAPPER_NAME}\"\nFWK_PATH=\"${SYMROOT}/${CONFIGURATION}-framework\"\nFWK_TARBALL=\"${RELEASE_TARBALL_FILE}\"\n\n\n# Package up\necho \"framework: packaging release tarball\"\ncd \"${FWK_PATH}\"\ntar -czf \"${TARGET_NAME}.tar.gz\" \"${FWK_NAME}\"\ncd \"${PROJECT_DIR}\"\ncp \"${FWK_PATH}/${TARGET_NAME}.tar.gz\" \"${RELEASE_TARBALL_FILE}\"\n\n\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BD288F8B13271E1800103518 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD2890A11327229100103518 /* GHUnitIOSTestMain.m in Sources */,
-				BD2890A41327231200103518 /* BSONCodec.m in Sources */,
 				BD2890CC1327252100103518 /* TestArray.m in Sources */,
 				BDA1D2B31328360100DE3F9A /* NSData+Base64.m in Sources */,
+				D9DB6AA613C7294300C87760 /* BSONCodec.m in Sources */,
+				D9DB6AAB13C7299000C87760 /* GHUnitIOSTestMain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2AAC07B0554694100DB518D /* Sources */ = {
+		D9DB6A7C13C725B500C87760 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD320BEE13271BC400FEB113 /* BSONCodec.m in Sources */,
+				D9DB6AA713C7294300C87760 /* BSONCodec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		1DEB921F08733DC00010E9CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/bson_objc.dst;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = bson_objc_Prefix.pch;
-				INSTALL_PATH = /usr/local/lib;
-				PRODUCT_NAME = bson_objc;
-			};
-			name = Debug;
-		};
-		1DEB922008733DC00010E9CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				DSTROOT = /tmp/bson_objc.dst;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = bson_objc_Prefix.pch;
-				INSTALL_PATH = /usr/local/lib;
-				PRODUCT_NAME = bson_objc;
-			};
-			name = Release;
-		};
 		1DEB922308733DC00010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -323,7 +313,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/UnitTest/UnitTest.pch";
-				INFOPLIST_FILE = "UnitTest-Info.plist";
+				INFOPLIST_FILE = "resources/UnitTest-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -353,7 +343,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/UnitTest/UnitTest.pch";
-				INFOPLIST_FILE = "UnitTest-Info.plist";
+				INFOPLIST_FILE = "resources/UnitTest-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -370,18 +360,55 @@
 			};
 			name = Release;
 		};
+		D9DB6A8A13C725B500C87760 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				INFOPLIST_FILE = "resources/bson-objc-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		D9DB6A8B13C725B500C87760 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				INFOPLIST_FILE = "resources/bson-objc-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "bson-objc" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1DEB921F08733DC00010E9CD /* Debug */,
-				1DEB922008733DC00010E9CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "bson-objc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -396,6 +423,15 @@
 			buildConfigurations = (
 				BD288F9113271E1900103518 /* Debug */,
 				BD288F9213271E1900103518 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9DB6A8913C725B500C87760 /* Build configuration list for PBXNativeTarget "bson-objc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9DB6A8A13C725B500C87760 /* Debug */,
+				D9DB6A8B13C725B500C87760 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
