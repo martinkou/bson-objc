@@ -13,6 +13,7 @@
 		BD288FB91327211B00103518 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD288FB81327211B00103518 /* UIKit.framework */; };
 		BD2890CC1327252100103518 /* TestArray.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2890CB1327252100103518 /* TestArray.m */; };
 		BDA1D2B31328360100DE3F9A /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA1D2B21328360100DE3F9A /* NSData+Base64.m */; };
+		D97AB6FC13C75169006A65D3 /* bson-objc.h in Headers */ = {isa = PBXBuildFile; fileRef = D97AB6FB13C75169006A65D3 /* bson-objc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D9DB6AA513C7294300C87760 /* BSONCodec.h in Headers */ = {isa = PBXBuildFile; fileRef = D9DB6AA313C7294300C87760 /* BSONCodec.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D9DB6AA613C7294300C87760 /* BSONCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DB6AA413C7294300C87760 /* BSONCodec.m */; };
 		D9DB6AA713C7294300C87760 /* BSONCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DB6AA413C7294300C87760 /* BSONCodec.m */; };
@@ -30,6 +31,9 @@
 		BDA1D1E2132824C700DE3F9A /* UnitTest.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitTest.pch; path = UnitTest/UnitTest.pch; sourceTree = "<group>"; };
 		BDA1D2B11328360100DE3F9A /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		BDA1D2B21328360100DE3F9A /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		D95C23EF13CBEBB8004BCE48 /* bson-objc.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = "bson-objc.tar.gz"; sourceTree = "<group>"; };
+		D95C23F013CBEC74004BCE48 /* bson-objc.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "bson-objc.framework"; path = "../Release-framework/bson-objc.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D97AB6FB13C75169006A65D3 /* bson-objc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "bson-objc.h"; path = "src/bson-objc.h"; sourceTree = "<group>"; };
 		D9DB6A8113C725B500C87760 /* bson-objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bson-objc.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9DB6AA013C728D500C87760 /* bson-objc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bson-objc-Info.plist"; sourceTree = "<group>"; };
 		D9DB6AA213C728D500C87760 /* UnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTest-Info.plist"; sourceTree = "<group>"; };
@@ -54,13 +58,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		034768DFFF38A50411DB9C8B /* Products */ = {
+		034768DFFF38A50411DB9C8B /* products */ = {
 			isa = PBXGroup;
 			children = (
 				BD288F8E13271E1800103518 /* UnitTest.app */,
 				D9DB6A8113C725B500C87760 /* bson-objc.framework */,
+				D95C23EF13CBEBB8004BCE48 /* bson-objc.tar.gz */,
+				D95C23F013CBEC74004BCE48 /* bson-objc.framework */,
 			);
-			name = Products;
+			name = products;
 			sourceTree = "<group>";
 		};
 		0867D691FE84028FC02AAC07 /* bson-objc */ = {
@@ -70,7 +76,7 @@
 				08FB77AEFE84172EC02AAC07 /* src */,
 				D9DB6A9F13C728D500C87760 /* resources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
-				034768DFFF38A50411DB9C8B /* Products */,
+				034768DFFF38A50411DB9C8B /* products */,
 			);
 			name = "bson-objc";
 			sourceTree = "<group>";
@@ -89,6 +95,7 @@
 		08FB77AEFE84172EC02AAC07 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D97AB6FB13C75169006A65D3 /* bson-objc.h */,
 				D9DB6AA313C7294300C87760 /* BSONCodec.h */,
 				D9DB6AA413C7294300C87760 /* BSONCodec.m */,
 			);
@@ -142,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9DB6AA513C7294300C87760 /* BSONCodec.h in Headers */,
+				D97AB6FC13C75169006A65D3 /* bson-objc.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +208,7 @@
 				en,
 			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* bson-objc */;
-			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -232,7 +240,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${ACTION}\" = \"build\" ]\nthen\n\n# Product name should be ${TARGET_NAME}.framework anyway...\nFWK_NAME=\"${WRAPPER_NAME}\"\nFWK_LIB=\"${FWK_NAME}/${TARGET_NAME}\"\n\n# Set the target folders and the final framework product.\nFWK_PATH=\"${SYMROOT}/${CONFIGURATION}-framework\"\nDEV_PATH=\"${SYMROOT}/${CONFIGURATION}-iphoneos\"\nSIM_PATH=\"${SYMROOT}/${CONFIGURATION}-iphonesimulator\"\nFWK_ROOT=\"${FWK_PATH}/${FWK_NAME}\"\n\necho \"framework: building ${FWK_NAME}\"\n\necho \"framework: setting up framework directory structure\"\n\nmkdir -p \"${FWK_ROOT}\"\nrm -rf \"${FWK_ROOT}/\"*\n\nif [ $? -ne 0 ];then\n  echo \"error: failed to delete existing framework. check permissions?\"\n  exit\nfi\n\n# Build the canonical Framework bundle directory structure\nmkdir -p \"${FWK_ROOT}/Versions\"\nmkdir -p \"${FWK_ROOT}/Versions/${FRAMEWORK_VERSION}\"\nmkdir -p \"${FWK_ROOT}/Versions/${FRAMEWORK_VERSION}/Resources\"\nmkdir -p \"${FWK_ROOT}/Versions/${FRAMEWORK_VERSION}/Headers\"\n\nln -s \"${FRAMEWORK_VERSION}\" \"${FWK_ROOT}/Versions/Current\"\nln -s \"Versions/Current/Headers\" \"${FWK_ROOT}/Headers\"\nln -s \"Versions/Current/Resources\" \"${FWK_ROOT}/Resources\"\nln -s \"Versions/Current/${TARGET_NAME}\" \"${FWK_ROOT}/${TARGET_NAME}\"\n\n\nif [ ! -d \"${DEV_PATH}/${FWK_NAME}/Headers\" ]\nthen\n  echo \"error: Framework target \\\"${TARGET_NAME}\\\" did not copy any headers.\" \\\n   \"Make sure the desired headers are on the 'Copy Headers' Build Phase.\" \\\n   \"Make sure you built the Device target (from which headers are copied).\"\n  exit 1\nfi\n\n# Copy the header files to the final product folder.\necho \"framework: copying headers from ${DEV_PATH}/${FWK_NAME}/Headers\"\nditto \"${DEV_PATH}/${FWK_NAME}/Headers\" \"${FWK_ROOT}/Headers\"\n\n# Copy the header files to the final product folder.\necho \"framework: copying Info.plist file\"\ncp \"${DEV_PATH}/${FWK_NAME}/Info.plist\" \"${FWK_ROOT}/Resources/Info.plist\"\n\n# Use the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\necho \"framework: creating universal lib ${FWK_PATH}/${FWK_LIB}\"\nlipo -create \"${DEV_PATH}/${FWK_LIB}\" \"${SIM_PATH}/${FWK_LIB}\" \\\n     -output \"${FWK_ROOT}/Versions/Current/${TARGET_NAME}\"\n\nfi";
+			shellScript = "if [ \"${ACTION}\" = \"build\" ]\nthen\n\n# Product name should be ${TARGET_NAME}.framework anyway...\nFWK_NAME=\"${WRAPPER_NAME}\"\nFWK_LIB=\"${FWK_NAME}/${TARGET_NAME}\"\n\n# Set the target folders and the final framework product.\nFWK_PATH=\"${SYMROOT}/${CONFIGURATION}-framework\"\nDEV_PATH=\"${SYMROOT}/${CONFIGURATION}-iphoneos\"\nSIM_PATH=\"${SYMROOT}/${CONFIGURATION}-iphonesimulator\"\nFWK_ROOT=\"${FWK_PATH}/${FWK_NAME}\"\n\necho \"framework: building ${FWK_NAME}\"\n\necho \"framework: setting up framework directory structure\"\n\nmkdir -p \"${FWK_ROOT}\"\nrm -rf \"${FWK_ROOT}/\"*\n\nif [ $? -ne 0 ];then\necho \"error: failed to delete existing framework. check permissions?\"\nexit\nfi\n\n# Build the canonical Framework bundle directory structure\nmkdir -p \"${FWK_ROOT}/Versions\"\nmkdir -p \"${FWK_ROOT}/Versions/${FRAMEWORK_VERSION}\"\nmkdir -p \"${FWK_ROOT}/Versions/${FRAMEWORK_VERSION}/Resources\"\nmkdir -p \"${FWK_ROOT}/Versions/${FRAMEWORK_VERSION}/Headers\"\n\nln -s \"${FRAMEWORK_VERSION}\" \"${FWK_ROOT}/Versions/Current\"\nln -s \"Versions/Current/Headers\" \"${FWK_ROOT}/Headers\"\nln -s \"Versions/Current/Resources\" \"${FWK_ROOT}/Resources\"\nln -s \"Versions/Current/${TARGET_NAME}\" \"${FWK_ROOT}/${TARGET_NAME}\"\n\n\nif [ ! -d \"${DEV_PATH}/${FWK_NAME}/Headers\" ]\nthen\n  echo \"error: Framework target \\\"${TARGET_NAME}\\\" did not copy any headers.\" \\\n  \"Make sure the desired headers are on the 'Copy Headers' Build Phase.\" \\\n  \"Make sure you built the Device target (from which headers are copied).\"\n  exit 1\nfi\n\n# Copy the header files to the final product folder.\necho \"framework: copying headers from ${DEV_PATH}/${FWK_NAME}/Headers\"\nditto \"${DEV_PATH}/${FWK_NAME}/Headers\" \"${FWK_ROOT}/Headers\"\n\nif [ ! -f \"${DEV_PATH}/${FWK_NAME}/Info.plist\" ]\nthen\n  echo \"error: Framework target\\\"${TARGET_NAME}\\\" did not produce \" \\\n   \"a framework plist\" \nfi\n\n# Copy the header files to the final product folder.\necho \"framework: copying Info.plist file\"\ncp \"${DEV_PATH}/${FWK_NAME}/Info.plist\" \"${FWK_ROOT}/Resources/Info.plist\"\n\n# Use the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\necho \"framework: creating universal lib ${FWK_PATH}/${FWK_LIB}\"\nlipo -create \"${DEV_PATH}/${FWK_LIB}\" \"${SIM_PATH}/${FWK_LIB}\" \\\n     -output \"${FWK_ROOT}/Versions/Current/${TARGET_NAME}\"\n\nfi";
 		};
 		D9DB6AAC13C72CA500C87760 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -245,7 +253,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]\nthen\n\n# Product name should be ${TARGET_NAME}.framework anyway...\nFWK_NAME=\"${WRAPPER_NAME}\"\nFWK_PATH=\"${SYMROOT}/${CONFIGURATION}-framework\"\nFWK_TARBALL=\"${RELEASE_TARBALL_FILE}\"\n\n\n# Package up\necho \"framework: packaging release tarball\"\ncd \"${FWK_PATH}\"\ntar -czf \"${TARGET_NAME}.tar.gz\" \"${FWK_NAME}\"\ncd \"${PROJECT_DIR}\"\ncp \"${FWK_PATH}/${TARGET_NAME}.tar.gz\" \"${RELEASE_TARBALL_FILE}\"\n\n\nfi";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]\nthen\n\n# Product name should be ${TARGET_NAME}.framework anyway...\nFWK_NAME=\"${WRAPPER_NAME}\"\nFWK_PATH=\"${SYMROOT}/${CONFIGURATION}-framework\"\nFWK_TARBALL=\"${RELEASE_TARBALL_FILE}\"\n\n\n# Package up\necho \"framework: packaging release tarball\"\ncd \"${FWK_PATH}\"\ntar -czf \"${TARGET_NAME}.tar.gz\" \"${FWK_NAME}\"\ncd \"${PROJECT_DIR}\"\nmkdir -p `dirname \"${RELEASE_TARBALL_FILE}\"`\ncp \"${FWK_PATH}/${TARGET_NAME}.tar.gz\" \"${RELEASE_TARBALL_FILE}\"\n\n\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -326,6 +334,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = UnitTest;
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv6 armv7 x86_64 i386";
 			};
 			name = Debug;
 		};
@@ -356,6 +365,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = UnitTest;
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv6 armv7 x86_64 i386";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -364,6 +374,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					x86_64,
+				);
 				DEAD_CODE_STRIPPING = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -373,14 +387,19 @@
 				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = 4.2;
+				INFOPLIST_EXPAND_BUILD_SETTINGS = NO;
 				INFOPLIST_FILE = "resources/bson-objc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				INFOPLIST_OUTPUT_FORMAT = xml;
+				INFOPLIST_PREPROCESS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RELEASE_TARBALL_FILE = "$(TARGET_NAME).tar.gz";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				VALID_ARCHS = "armv6 armv7 x86_64 i386";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -389,6 +408,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					x86_64,
+				);
 				DEAD_CODE_STRIPPING = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -396,14 +419,19 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = 4.2;
+				INFOPLIST_EXPAND_BUILD_SETTINGS = NO;
 				INFOPLIST_FILE = "resources/bson-objc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				INFOPLIST_OUTPUT_FORMAT = xml;
+				INFOPLIST_PREPROCESS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RELEASE_TARBALL_FILE = "$(TARGET_NAME).tar.gz";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				VALID_ARCHS = "armv6 armv7 x86_64 i386";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
