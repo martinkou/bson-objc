@@ -379,6 +379,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RELEASE_TARBALL_FILE = "$(TARGET_NAME).tar.gz";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -401,6 +402,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RELEASE_TARBALL_FILE = "$(TARGET_NAME).tar.gz";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 			};
