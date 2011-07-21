@@ -26,6 +26,7 @@ static NSDictionary *BSONTypes()
 				  BSONTYPE(0x04, NSArray),
 				  BSONTYPE(0x05, NSData),
 				  BSONTYPE(0x08, NSNumber),
+				  BSONTYPE(0x09, NSDate),
 				  BSONTYPE(0x0A, NSNull),
 				  BSONTYPE(0x10, NSNumber),
 				  BSONTYPE(0x12, NSNumber),
@@ -530,5 +531,32 @@ static NSDictionary *BSONTypes()
 + (id) BSONFragment: (NSData *) data at: (const void **) base ofType: (uint8_t) typeID
 {
 	return [NSNull null];
+}
+@end
+
+@implementation NSDate (BSON)
+- (uint8_t) BSONTypeID
+{
+	return 0x09;
+}
+
+- (NSData *) BSONEncode
+{
+  NSTimeInterval interval = [self timeIntervalSince1970];
+  int64_t milliseconds = HOSTTOBSON64((int64_t)(interval * 1000));
+	return [NSData dataWithBytes:&milliseconds length:sizeof(int64_t)];
+}
+
+- (NSData *) BSONRepresentation
+{
+  return [self BSONEncode];
+}
+
++ (id) BSONFragment: (NSData *) data at: (const void **) base ofType: (uint8_t) typeID
+{
+  int64_t milliseconds = BSONTOHOST64(*(int64_t *)*base);
+  *base += sizeof(int64_t);
+  NSTimeInterval interval = (milliseconds) / 1000.0;
+	return [NSDate dateWithTimeIntervalSince1970:interval];
 }
 @end

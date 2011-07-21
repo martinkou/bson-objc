@@ -45,3 +45,6 @@
 
 @interface NSNull (BSON) <BSONCoding>
 @end
+
+@interface NSDate (BSON) <BSONCoding>
+@end

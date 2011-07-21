@@ -124,4 +124,32 @@
 	GHAssertEquals([checkData length], [serialized length], @"BSON length should be correct.");
 	GHAssertEqualObjects(checkData, serialized, @"Encoded array should be correct.");
 }
+
+- (void) subtestDatetimeString:(NSString *)bsonstring withMilliseconds:(int64_t)milliseconds
+{
+  NSData *bsondata = [NSData dataFromBase64String:bsonstring];
+
+  NSDate *date = [NSDate dateWithTimeIntervalSince1970:milliseconds / 1000.0];
+  NSData *serialized = [date BSONEncode];
+  GHAssertEquals([bsondata length], [serialized length],
+    @"BSON length should be correct (%lld).", milliseconds);
+  GHAssertEqualObjects(bsondata, serialized,
+    @"Encoded date should be correct. (%lld, %@, %@)", milliseconds, bsondata, serialized);
+
+  const void *base = [serialized bytes];
+  NSDate *deserialized = [NSDate BSONFragment:serialized at:&base ofType:[date BSONTypeID]];
+  GHAssertEqualObjects(deserialized, date,
+    @"Decoded date should be correct. (%lld) %@ %@", milliseconds, date, deserialized);
+}
+
+- (void) testDatetime
+{
+  // all end in 000 because floating point math is evil.
+  [self subtestDatetimeString:@"EMm6SDEBAAA=" withMilliseconds:1311185226000];
+  [self subtestDatetimeString:@"EMEuxYUAAAA=" withMilliseconds:574538826000];
+  [self subtestDatetimeString:@"EH3DXy4DAAA=" withMilliseconds:3497710026000];
+  [self subtestDatetimeString:@"EKEtgAz+//8=" withMilliseconds:-2145333174000];
+  [self subtestDatetimeString:@"ED2fM0r///8=" withMilliseconds:-780817974000];
+}
+
 @end
