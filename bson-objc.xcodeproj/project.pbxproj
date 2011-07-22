@@ -18,7 +18,10 @@
 		BD2890CC1327252100103518 /* TestArray.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2890CB1327252100103518 /* TestArray.m */; };
 		BD320BED13271BC400FEB113 /* BSONCodec.h in Headers */ = {isa = PBXBuildFile; fileRef = BD320BEB13271BC400FEB113 /* BSONCodec.h */; };
 		BD320BEE13271BC400FEB113 /* BSONCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = BD320BEC13271BC400FEB113 /* BSONCodec.m */; };
+		BD7E09EC13AB39A600AA7378 /* TestNull.h in Headers */ = {isa = PBXBuildFile; fileRef = BD7E09EA13AB39A600AA7378 /* TestNull.h */; };
+		BD7E09EE13AB39E600AA7378 /* TestNull.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7E09EB13AB39A600AA7378 /* TestNull.m */; };
 		BDA1D2B31328360100DE3F9A /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA1D2B21328360100DE3F9A /* NSData+Base64.m */; };
+		BDA8152B13D9689800139F4A /* TestNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA8152A13D9689800139F4A /* TestNumber.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,9 +37,13 @@
 		BD2890CB1327252100103518 /* TestArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestArray.m; sourceTree = "<group>"; };
 		BD320BEB13271BC400FEB113 /* BSONCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSONCodec.h; sourceTree = "<group>"; };
 		BD320BEC13271BC400FEB113 /* BSONCodec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSONCodec.m; sourceTree = "<group>"; };
+		BD7E09EA13AB39A600AA7378 /* TestNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNull.h; sourceTree = "<group>"; };
+		BD7E09EB13AB39A600AA7378 /* TestNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNull.m; sourceTree = "<group>"; };
 		BDA1D1E2132824C700DE3F9A /* UnitTest.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitTest.pch; path = UnitTest/UnitTest.pch; sourceTree = "<group>"; };
 		BDA1D2B11328360100DE3F9A /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		BDA1D2B21328360100DE3F9A /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		BDA8152913D9689800139F4A /* TestNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNumber.h; sourceTree = "<group>"; };
+		BDA8152A13D9689800139F4A /* TestNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNumber.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libbson_objc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libbson_objc.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -119,6 +126,10 @@
 				BD2890CD1327253000103518 /* GHUnit */,
 				BD2890CA1327252100103518 /* TestArray.h */,
 				BD2890CB1327252100103518 /* TestArray.m */,
+				BD7E09EA13AB39A600AA7378 /* TestNull.h */,
+				BD7E09EB13AB39A600AA7378 /* TestNull.m */,
+				BDA8152913D9689800139F4A /* TestNumber.h */,
+				BDA8152A13D9689800139F4A /* TestNumber.m */,
 			);
 			path = UnitTest;
 			sourceTree = SOURCE_ROOT;
@@ -151,6 +162,7 @@
 			files = (
 				AA747D9F0F9514B9006C5449 /* bson_objc_Prefix.pch in Headers */,
 				BD320BED13271BC400FEB113 /* BSONCodec.h in Headers */,
+				BD7E09EC13AB39A600AA7378 /* TestNull.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,10 +244,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD7E09EE13AB39E600AA7378 /* TestNull.m in Sources */,
 				BD2890A11327229100103518 /* GHUnitIOSTestMain.m in Sources */,
 				BD2890A41327231200103518 /* BSONCodec.m in Sources */,
 				BD2890CC1327252100103518 /* TestArray.m in Sources */,
 				BDA1D2B31328360100DE3F9A /* NSData+Base64.m in Sources */,
+				BDA8152B13D9689800139F4A /* TestNumber.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

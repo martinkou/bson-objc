@@ -373,7 +373,10 @@ static NSDictionary *BSONTypes()
 {
 	if (t == 0x01)
 	{
-		double value = ((double *) *base)[0];
+		// #5: LLVM GCC requires double pointers to have a certain alignment in ARM CPUs.
+        // So we can't just read the double off directly from the data - need to copy it.
+        double value;
+        memcpy(&value, *base, sizeof(double));
 		*base += 8;
 		return [NSNumber numberWithDouble: value];
 	}
@@ -519,7 +522,7 @@ static NSDictionary *BSONTypes()
 
 - (NSData *) BSONEncode
 {
-	return [NSData dataWithBytes: "" length: 0];
+	return [NSData data];
 }
 
 - (NSData *) BSONRepresentation
