@@ -318,6 +318,7 @@
 					"\"$(SRCROOT)/UnitTest\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/UnitTest/UnitTest.pch";
@@ -350,6 +351,7 @@
 					"\"$(SRCROOT)/UnitTest\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/UnitTest/UnitTest.pch";
 				INFOPLIST_FILE = "resources/UnitTest-Info.plist";
