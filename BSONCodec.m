@@ -168,7 +168,7 @@ static NSDictionary *BSONTypes()
 + (id) BSONFragment: (NSData *) data at: (const void **) base ofType: (uint8_t) t
 {
 	const void *current = [data bytes];
-	if (base != nil)
+	if (base)
 		current = *base;
 	else
 		base = &current;
@@ -244,7 +244,7 @@ static NSDictionary *BSONTypes()
 + (id) BSONFragment: (NSData *) data at: (const void **) base ofType: (uint8_t) t
 {
 	const void *current = [data bytes];
-	if (base != nil)
+	if (base)
 		current = *base;
 	else
 		base = &current;
@@ -260,7 +260,7 @@ static NSDictionary *BSONTypes()
 
 - (NSDictionary *) BSONValue
 {
-	return [NSDictionary BSONFragment: self at: nil ofType: 0x03];
+	return [NSDictionary BSONFragment: self at: NULL ofType: 0x03];
 }
 @end
 
