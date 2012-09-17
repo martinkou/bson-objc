@@ -191,7 +191,7 @@ static NSDictionary *BSONTypes()
 
 		*base = current;
 		Class typeClass = [BSONTypes() objectForKey: [NSNumber numberWithChar: typeID]];
-		id value = objc_msgSend(typeClass, @selector(BSONFragment:at:ofType:), data, base, typeID);
+		id value = [typeClass BSONFragment: data at: base ofType: typeID];
 		current = *base;
 
 		[retval setObject: value forKey: key];
