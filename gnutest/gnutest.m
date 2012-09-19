@@ -3,6 +3,13 @@
 //#import "NSData+Base64.h"
 
 int main() {
+	START_SET("sanity")
+
+	NSDictionary<BSONCoding>*d = [NSDictionary dictionary];
+	PASS([[d class] isEqualTo: [NSDictionary class]], "NSDictionary is an NSDictionary.");
+
+	END_SET("sanity")
+	
 	START_SET("Array")
 	
 	NSString *lyrics = @"Viva La Vida lyrics\n\n"
@@ -63,7 +70,7 @@ int main() {
 	"		But that was when I ruled the world";
 	
 	NSMutableArray *lyricsList = [[lyrics componentsSeparatedByString: @"\n"] mutableCopy];
-	NSDictionary* _doc = [[NSDictionary alloc] initWithObjectsAndKeys: lyricsList, @"lyrics", nil];
+	NSDictionary<BSONCoding>* _doc = [[NSDictionary alloc] initWithObjectsAndKeys: lyricsList, @"lyrics", nil];
 	[lyricsList release];
 
 	NSData *serialized = [_doc BSONEncode];
@@ -118,7 +125,7 @@ int main() {
 	//PASS([original isEqualToDictionary: decoded], "Encode and decode empty dictionary");
 	//PASS([standard isEqualToData: encoded], "Encoded data should match standard");
 
-	NSDictionary *original = [NSDictionary dictionaryWithObjectsAndKeys:
+	NSDictionary<BSONCoding> *original = [NSDictionary dictionaryWithObjectsAndKeys:
 		[NSNull null], @"valueA",
 		[NSDictionary dictionaryWithObjectsAndKeys:
 			[NSNull null], @"foo",
@@ -134,7 +141,7 @@ int main() {
 
 	START_SET("Number")
 
-	NSDictionary *original = [NSDictionary dictionaryWithObjectsAndKeys:
+	NSDictionary<BSONCoding> *original = [NSDictionary dictionaryWithObjectsAndKeys:
 		@"To be or not to be", @"that's not the question",
 		[NSNumber numberWithDouble: 3.14159], @"pi",
 		[NSNumber numberWithInt: 42], @"Answer to Life, the Universe, and Everything",
