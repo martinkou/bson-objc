@@ -3,12 +3,9 @@
 //#import "NSData+Base64.h"
 
 int main() {
-	START_SET("sanity")
-
-	NSDictionary<BSONCoding>*d = [NSDictionary dictionary];
-	PASS([[d class] isEqualTo: [NSDictionary class]], "NSDictionary is an NSDictionary.");
-
-	END_SET("sanity")
+	printf("fixed: %d\n", gnustep_fix);
+	gnustep_fix = 1;
+	printf("fixed: %d\n", gnustep_fix);
 	
 	START_SET("Array")
 	
