@@ -13,6 +13,8 @@
 
 #define BSONTYPE(tag,className) [className class], [NSNumber numberWithChar: (tag)]
 
+int gnustep_fix = 2;
+
 static NSDictionary *BSONTypes()
 {
 	static NSDictionary *retval = nil;
@@ -168,7 +170,7 @@ static NSDictionary *BSONTypes()
 + (id) BSONFragment: (NSData *) data at: (const void **) base ofType: (uint8_t) t
 {
 	const void *current = [data bytes];
-	if (base != nil)
+	if (base)
 		current = *base;
 	else
 		base = &current;
@@ -191,7 +193,7 @@ static NSDictionary *BSONTypes()
 
 		*base = current;
 		Class typeClass = [BSONTypes() objectForKey: [NSNumber numberWithChar: typeID]];
-		id value = objc_msgSend(typeClass, @selector(BSONFragment:at:ofType:), data, base, typeID);
+		id value = [typeClass BSONFragment: data at: base ofType: typeID];
 		current = *base;
 
 		[retval setObject: value forKey: key];
@@ -244,7 +246,7 @@ static NSDictionary *BSONTypes()
 + (id) BSONFragment: (NSData *) data at: (const void **) base ofType: (uint8_t) t
 {
 	const void *current = [data bytes];
-	if (base != nil)
+	if (base)
 		current = *base;
 	else
 		base = &current;
@@ -260,7 +262,7 @@ static NSDictionary *BSONTypes()
 
 - (NSDictionary *) BSONValue
 {
-	return [NSDictionary BSONFragment: self at: nil ofType: 0x03];
+	return [NSDictionary BSONFragment: self at: NULL ofType: 0x03];
 }
 @end
 
@@ -292,7 +294,7 @@ static NSDictionary *BSONTypes()
 
 		case 'q': return 0x12;
 		default:
-			[NSException raise: NSInvalidArgumentException format: @"%@::%s - invalid encoding type '%c'", [self class], _cmd, encoding];
+			[NSException raise: NSInvalidArgumentException format: @"%@::%@ - invalid encoding type '%c'", [self class], NSStringFromSelector(_cmd), encoding];
 	}
 	return 0;
 }
@@ -360,7 +362,7 @@ static NSDictionary *BSONTypes()
 		return [NSData dataWithBytes: &value length: 8];
 	}
 
-	[NSException raise: NSInvalidArgumentException format: @"%@::%s - invalid encoding type '%c'", [self class], _cmd, encoding];
+	[NSException raise: NSInvalidArgumentException format: @"%@::%@ - invalid encoding type '%c'", [self class], NSStringFromSelector(_cmd), encoding];
 	return nil;
 }
 

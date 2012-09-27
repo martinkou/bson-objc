@@ -1,4 +1,4 @@
-build
-*.pbxuser
-*.perspectivev3
-*~
+.DS_Store
+obj
+*tests.log
+*tests.sum
