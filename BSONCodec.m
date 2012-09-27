@@ -13,6 +13,8 @@
 
 #define BSONTYPE(tag,className) [className class], [NSNumber numberWithChar: (tag)]
 
+int gnustep_fix = 2;
+
 static NSDictionary *BSONTypes()
 {
 	static NSDictionary *retval = nil;

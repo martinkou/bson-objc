@@ -46,3 +46,7 @@
 
 @interface NSNull (BSON) <BSONCoding>
 @end
+
+// set to 1 before using this library
+// or hell will break loose.
+int gnustep_fix;
