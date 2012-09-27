@@ -49,4 +49,4 @@
 
 // set to 1 before using this library
 // or hell will break loose.
-int gnustep_fix = 0;
+int gnustep_fix;

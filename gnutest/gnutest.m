@@ -3,7 +3,6 @@
 //#import "NSData+Base64.h"
 
 int main() {
-	printf("fixed: %d\n", gnustep_fix);
 	gnustep_fix = 1;
 	printf("fixed: %d\n", gnustep_fix);
 	
